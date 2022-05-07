@@ -1,15 +1,17 @@
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int i = scanner.nextInt();
-        int j = scanner.nextInt();
+        ArrayList a = new ArrayList();
 
-        System.out.println(i + j);
-        System.out.println(i - j);
-        System.out.println(i * j);
-        System.out.println(i / j);
-        scanner.close();
+        ArrayList b = new ArrayList();
+
+        a.add("aa");
+        b.add("bb");
+
+        b.addAll(a);
+
+        System.out.println(a);
+        System.out.println(b);
     }
 }
