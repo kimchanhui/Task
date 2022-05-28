@@ -31,6 +31,8 @@ public class memo {
         } else if (selValue == 2) {
             System.out.println("[메모 읽기]");
 
+            ReadMemo();
+
             ReadFile();
         } else if (selValue == 3) {
 
@@ -51,11 +53,11 @@ public class memo {
         System.out.print("내용(exit = 입력종료) : ");
         String content = "";
 
-        String text = name + " | " + severity;
+        String text = name + "   " + severity;
 
         AppendText(text);
         while (true) {
-            content = scanner.nextLine();
+            content = scanner.next();
 
             if (content.equals("exit")) {
                 content = "======";
@@ -84,24 +86,20 @@ public class memo {
         }
     }
 
-    private static void ReadFile() {
+    private static void ReadMemo() {
+        System.out.println("[번호]  [이름]   [내용(일부분)]");
+    }
 
+    private static void ReadFile() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            
 
-            String line = reader.readLine();
+            String list = "";
 
-            while (line != null) {
-                list.add(line);
-
-                line = reader.readLine();
+            for (int i = 0; i <= reader.readLine().length(); i++) {
+                list += reader.readLine();
             }
-
-            reader.close();
-
-            System.out.println(list);
-
+            System.out.print(list);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
