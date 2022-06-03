@@ -44,7 +44,7 @@ public class WriteMemo {
             }
         }
 
-        String data = "중요도 : " + severity + "\n날짜 : " + GetDate() + content;
+        String data = "중요도 : " + severity + "\n날짜 : " + GetDate() + " ." + content;
 
         return data;
     }

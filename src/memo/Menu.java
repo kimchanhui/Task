@@ -35,11 +35,12 @@ public class Menu {
         } else if (value == 2) {
             System.out.println("[메모 읽기]");
 
-
+            System.out.println("[번호]    [이름]    [내용]");
+            ReadMemo readMemo = new ReadMemo(value);
         } else if (value == 3) {
-
+            ReadMemo readMemo = new ReadMemo(value);
         } else if (value == 4) {
-
+            System.exit(0);
         }
     }
 }
