@@ -24,27 +24,22 @@ public class SocketServer {
                 System.out.println("Server : Accepted.");
                 InputStream stream = client.getInputStream();
                 BufferedReader in = new BufferedReader(new InputStreamReader(stream));
-                String data = null;
-                StringBuilder receivedData = new StringBuilder();
-                while((data = in.readLine()) != null) {
-                    receivedData.append(data);
+                String data = in.readLine();
+
+                System.out.println("Received data:" + data);
+
+
+                OutputStream outputStream = client.getOutputStream();
+                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(outputStream));
+                byte[] ascii = data.toString().getBytes(StandardCharsets.US_ASCII);
+                StringBuffer sb = new StringBuffer();
+                for(byte b : ascii) {
+                    sb.append(String.format("%s ", b));
                 }
-
-                byte[] ascii = receivedData.toString().getBytes(StandardCharsets.US_ASCII);
-                String asciiString = Arrays.toString(ascii);
-
-                System.out.println("Received data:" + asciiString.toString());
-                in.close();
-                stream.close();
-                client.close();
-                if(receivedData != null && "exit".equals(receivedData.toString())) {
-                    OutputStream outputStream = client.getOutputStream();
-                    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(outputStream));
-                    byte[] bytes = "bye!".getBytes();
-                    out.write(String.valueOf(bytes));
-                    out.close();
-                }
-
+                out.write(sb.toString());
+                out.newLine();
+                out.flush();
+                System.out.println("Return : " + sb.toString());
                 System.out.println("----------");
             }
         } catch (IOException e) {

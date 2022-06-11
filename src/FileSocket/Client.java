@@ -1,28 +1,21 @@
-package Chatting;
-
-import socket.SocketClientSample;
+package FileSocket;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Date;
 import java.util.Scanner;
 
-public class SocketClient {
+public class Client {
     public static void main(String[] args) {
-        SocketClient sample = new SocketClient();
-        sample.sendSocket();
+        Client client = new Client();
+        client.sendSocket();
     }
 
     private void sendSocket() {
-
-
         boolean loop = true;
         while (loop) {
-
             sendSocketData();
         }
-
     }
 
     private void sendSocketData() {
@@ -41,10 +34,10 @@ public class SocketClient {
             out.newLine();
             out.flush();
 
-            InputStream inputStream = socket.getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-            String receivedData = in.readLine();
-            System.out.println("Received data:" + receivedData);
+//            InputStream inputStream = socket.getInputStream();
+//            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+//            String receivedData = in.readLine();
+//            System.out.println("Received data:" + receivedData);
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
