@@ -13,10 +13,6 @@ public class Write {
     private void CreateFile(String text) {
         File file = new File("C:\\textFolder\\file.txt");
 
-        if (file.isFile()) {
-            file.delete();
-        }
-
         BufferedWriter bufferedWriter = null;
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(file));
